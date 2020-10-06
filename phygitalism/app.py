@@ -4,10 +4,10 @@ import os, time
 
 app = Flask(__name__)
 
+
 def make_answer():
     data = []
-
-    path = "/home/michael/programming/Python/teaching"
+    path = "/api/meta"
     files = os.listdir(path)
     for file in files:
         filename, file_extension = os.path.splitext(file)
@@ -18,10 +18,14 @@ def make_answer():
                      'time': date})
     return data
 
+
 @app.route('/')
 def index():
     d = make_answer()
     return jsonify(d)
 
+
 if __name__ == '__main__':
     app.run(debug=True,host='127.0.0.1')
+
+

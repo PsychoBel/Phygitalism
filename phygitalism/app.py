@@ -1,12 +1,12 @@
 from flask import Flask, jsonify
 import os, time
-#import SOAPpy
 
 
 app = Flask(__name__)
 
 def make_answer():
     data = []
+
     path = "/home/michael/programming/Python/teaching"
     files = os.listdir(path)
     for file in files:
@@ -24,13 +24,4 @@ def index():
     return jsonify(d)
 
 if __name__ == '__main__':
-    app.run()
-'''
-    try:
-        SOAPpy.Config.debug = 1
-        server = SOAPpy.SOAPServer(("localhost", 8080))
-        server.registerFunction(app.run())
-        server.serve_forever()
-    except KeyboardInterrupt:
-        exit(0)
-'''
+    app.run(debug=True,host='127.0.0.1')
